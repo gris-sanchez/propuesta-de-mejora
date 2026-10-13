@@ -1,0 +1,41 @@
+Rol y Objetivo:
+Actúa como un Arquitecto de Computadores Senior y un Diseñador Gráfico experto en visualización de datos de hardware. Tu objetivo es generar la estructura, el diseño conceptual y el contenido exacto (copywriting) para una infografía técnica avanzada sobre un "Simulador de Jerarquía de Memoria Caché Multinivel desarrollado en C++". Esta infografía debe superar a los recursos genéricos anteriores, integrando tanto la teoría arquitectónica como los detalles de implementación en software.
+
+Público Objetivo:
+Estudiantes universitarios de ingeniería en computación y profesores de Arquitectura del Computador. El tono debe ser estrictamente académico, técnico y preciso.
+
+Estructura Visual y Contenido Requerido (Dividido en 4 Secciones):
+
+SECCIÓN 1: Abstracción del Hardware en C++ (POO)
+
+Visual: Un diagrama de bloques 3D que muestre cómo la memoria física se traduce a código.
+
+Contenido Textual: Explicar que la memoria se modeló usando std::vector para crear un Mapeo Asociativo por Conjuntos. Detallar la estructura atómica de la clase BloqueCache, enumerando sus metadatos obligatorios: bit_validez, etiqueta, lru_contador y EstadoMESI.
+
+SECCIÓN 2: Políticas de Reemplazo (LRU Dinámico)
+
+Visual: Una línea de tiempo horizontal o un diagrama de flujo de arreglos (arrays) mostrando un "Fallo de Caché" (Cache Miss).
+
+Contenido Textual: Describir la lógica de búsqueda lineal utilizada. Explicar cómo el algoritmo escanea las vías (ways) de un conjunto lleno, evalúa el lru_contador de cada bloque y expulsa el dato con la marca de tiempo más antigua para alojar el nuevo bloque.
+
+SECCIÓN 3: Sincronización y Coherencia (MESI & Write-Back)
+
+Visual: Un diagrama cíclico de 4 nodos representando los estados Modificado (M), Exclusivo (E), Compartido (S) e Inválido (I). Acompañado de un flujo vertical que represente niveles L1 -> L2 -> L3.
+
+Contenido Textual: Definir la política de "Escritura Aplazada" (Write-Back) donde la escritura a RAM se evita cambiando el bloque a estado MODIFICADO en L1.
+
+Concepto Clave a incluir: Describir la función recursiva propagarWriteBack(), explicando que intercepta los bloques expulsados de L1 y los inyecta en niveles inferiores (L2 o L3) para evitar costosos viajes de 80 ciclos a la memoria principal.
+
+SECCIÓN 4: Rendimiento Global (Análisis AMAT empírico)
+
+Visual: Una balanza equilibrando "Velocidad Extrema" (icono de CPU/L1) vs "Capacidad Masiva" (icono de servidor/L3).
+
+Contenido Textual: Mostrar la fórmula matemática del AMAT (Average Memory Access Time): AMAT = Hit_Time + (Miss_Rate * Miss_Penalty). Incluir la conclusión del simulador: "El sistema protegió a la CPU de las penalizaciones de RAM. En entornos predecibles, la baja latencia de L1 (4 ciclos) dominó el rendimiento. En entornos caóticos, la masiva capacidad de L3 (8 MB) actuó como red de contención vital, logrando un AMAT global óptimo".
+
+Instrucciones de Salida para la IA:
+
+No generes solo un resumen. Genera el texto exacto que debe ir impreso en la infografía para cada sección mencionada.
+
+Sugiere una paleta de colores hexadecimal (ej. azules tecnológicos, verdes para aciertos y rojos para fallos) y recomendaciones de tipografía (ej. Roboto, Montserrat).
+
+Utiliza un formato de viñetas claras para facilitar la posterior maquetación en herramientas como Canva, Figma o Gamma.app.
